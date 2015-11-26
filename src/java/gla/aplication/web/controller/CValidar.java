@@ -52,10 +52,10 @@ public class CValidar extends HttpServlet {
                 int cant = t_usuario.size();
                 if (cant > 0) {
                     HttpSession sesion = request.getSession(true);
-                    sesion.setAttribute("ID_USER", user.getId_usuario());
-                    sesion.setAttribute("NOMBRE", user.getNo_persona());
-                    sesion.setAttribute("AP_P", user.getAp_paterno());
-                    sesion.setAttribute("AP_M", user.getAp_materno());
+                    sesion.setAttribute("ID_USER", user.getIDUSUARIO());
+                    sesion.setAttribute("NOMBRE", user.getUSUARIO());
+                    sesion.setAttribute("AP_P", user.getAPE_PAT());
+                    sesion.setAttribute("AP_M", user.getAPE_MAT());
                     response.sendRedirect("Principal.html");
                 } else {
                     out.print("no se pu");

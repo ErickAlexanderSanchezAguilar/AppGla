@@ -10,7 +10,8 @@ package gla.aplication.model;
  * @author Alexander
  */
 public class v_Usuario {
-    private String id_usuario;
+
+    /*  private String id_usuario;
     private String no_usuario;
     private String cl_password;
     private String id_tipo_usuario;
@@ -21,42 +22,88 @@ public class v_Usuario {
     private String co_estudiante;
     private String nu_celular;
     private String nu_doc_dni;
-    private String id_tipo_persona;
+    private String id_tipo_persona;*/
+    
 
-    public v_Usuario(String id_usuario, String no_usuario, String cl_password, String id_tipo_usuario, String id_persona, String es_usuario, String no_persona, String ap_paterno, String co_estudiante, String nu_celular, String nu_doc_dni, String id_tipo_persona, String ap_materno, String co_electronico_pe) {
-        this.id_usuario = id_usuario;
-        this.no_usuario = no_usuario;
-        this.cl_password = cl_password;
-        this.id_tipo_usuario = id_tipo_usuario;
-        this.id_persona = id_persona;
-        this.es_usuario = es_usuario;
-        this.no_persona = no_persona;
-        this.ap_paterno = ap_paterno;
-        this.co_estudiante = co_estudiante;
-        this.nu_celular = nu_celular;
-        this.nu_doc_dni = nu_doc_dni;
-        this.id_tipo_persona = id_tipo_persona;
-        this.ap_materno = ap_materno;
-        this.co_electronico_pe = co_electronico_pe;
+
+    private String IDUSUARIO;
+    private String USUARIO;
+    private String PASSWORD;
+    private String IDROL;
+    private String APE_PAT;
+    private String APE_MAT;
+    private String DNI;
+    private String CELULAR;
+    private String DIRECCION;
+    private String FECH_NAC;
+    private String SEXO;
+    private String NOMBRE;
+
+    /*public v_Usuario(String id_usuario, String no_usuario, String cl_password, String id_tipo_usuario, String id_persona, String es_usuario, String no_persona, String ap_paterno, String co_estudiante, String nu_celular, String nu_doc_dni, String id_tipo_persona, String ap_materno, String co_electronico_pe) {
+     this.id_usuario = id_usuario;
+     this.no_usuario = no_usuario;
+     this.cl_password = cl_password;
+     this.id_tipo_usuario = id_tipo_usuario;
+     this.id_persona = id_persona;
+     this.es_usuario = es_usuario;
+     this.no_persona = no_persona;
+     this.ap_paterno = ap_paterno;
+     this.co_estudiante = co_estudiante;
+     this.nu_celular = nu_celular;
+     this.nu_doc_dni = nu_doc_dni;
+     this.id_tipo_persona = id_tipo_persona;
+     this.ap_materno = ap_materno;
+     this.co_electronico_pe = co_electronico_pe;
+     }
+     */
+    public v_Usuario(String IDUSUARIO, String USUARIO, String PASSWORD, String IDROL, String APE_PAT, String APE_MAT, String DNI, String CELULAR, String DIRECCION, String FECH_NAC, String SEXO, String NOMBRE) {
+        this.IDUSUARIO = IDUSUARIO;
+        this.USUARIO = USUARIO;
+        this.PASSWORD = PASSWORD;
+        this.IDROL = IDROL;
+        this.APE_PAT = APE_PAT;
+        this.APE_MAT = APE_MAT;
+        this.DNI = DNI;
+        this.CELULAR = CELULAR;
+        this.DIRECCION = DIRECCION;
+        this.FECH_NAC = FECH_NAC;
+        this.SEXO = FECH_NAC;
+        this.NOMBRE = NOMBRE;
     }
+    /*
+     public v_Usuario() {
+     this.id_usuario = "";
+     this.no_usuario = "";
+     this.cl_password = "";
+     this.id_tipo_usuario = "";
+     this.id_persona = "";
+     this.es_usuario = "";
+     this.no_persona = "";
+     this.ap_paterno = "";
+     this.co_estudiante = "";
+     this.nu_celular = "";
+     this.nu_doc_dni = "";
+     this.id_tipo_persona = "";
+     this.ap_materno = "";
+     this.co_electronico_pe = "";
+     }*/
 
     public v_Usuario() {
-        this.id_usuario = "";
-        this.no_usuario = "";
-        this.cl_password = "";
-        this.id_tipo_usuario = "";
-        this.id_persona = "";
-        this.es_usuario = "";
-        this.no_persona = "";
-        this.ap_paterno = "";
-        this.co_estudiante = "";
-        this.nu_celular = "";
-        this.nu_doc_dni = "";
-        this.id_tipo_persona = "";
-        this.ap_materno = "";
-        this.co_electronico_pe = "";
+        this.IDUSUARIO = "";
+        this.USUARIO = "";
+        this.PASSWORD = "";
+        this.IDROL = "";
+        this.APE_PAT = "";
+        this.APE_MAT = "";
+        this.DNI = "";
+        this.CELULAR = "";
+        this.DIRECCION = "";
+        this.FECH_NAC = "";
+        this.SEXO = "";
+        this.NOMBRE = "";
     }
-
+    
+/*
     public String getId_usuario() {
         return id_usuario;
     }
@@ -169,5 +216,102 @@ public class v_Usuario {
         this.co_electronico_pe = co_electronico_pe;
     }
     private String ap_materno;
-    private String co_electronico_pe;
+    private String co_electronico_pe;*/
+    
+    
+
+    public String getIDUSUARIO() {
+        return IDUSUARIO;
+    }
+
+    public void setIDUSUARIO(String IDUSUARIO) {
+        this.IDUSUARIO = IDUSUARIO;
+    }
+
+    public String getUSUARIO() {
+        return USUARIO;
+    }
+
+    public void setUSUARIO(String USUARIO) {
+        this.USUARIO = USUARIO;
+    }
+
+    public String getPASSWORD() {
+        return PASSWORD;
+    }
+
+    public void setPASSWORD(String PASSWORD) {
+        this.PASSWORD = PASSWORD;
+    }
+
+    public String getIDROL() {
+        return IDROL;
+    }
+
+    public void setIDROL(String IDROL) {
+        this.IDROL = IDROL;
+    }
+
+    public String getAPE_PAT() {
+        return APE_PAT;
+    }
+
+    public void setAPE_PAT(String APE_PAT) {
+        this.APE_PAT = APE_PAT;
+    }
+
+    public String getAPE_MAT() {
+        return APE_MAT;
+    }
+
+    public void setAPE_MAT(String APE_MAT) {
+        this.APE_MAT = APE_MAT;
+    }
+
+    public String getDNI() {
+        return DNI;
+    }
+
+    public void setDNI(String DNI) {
+        this.DNI = DNI;
+    }
+
+    public String getCELULAR() {
+        return CELULAR;
+    }
+
+    public void setCELULAR(String CELULAR) {
+        this.CELULAR = CELULAR;
+    }
+
+    public String getDIRECCION() {
+        return DIRECCION;
+    }
+
+    public void setDIRECCION(String DIRECCION) {
+        this.DIRECCION = DIRECCION;
+    }
+
+    public String getFECH_NAC() {
+        return FECH_NAC;
+    }
+
+    public void setFECH_NAC(String FECH_NAC) {
+        this.FECH_NAC = FECH_NAC;
+    }
+
+    public String getSEXO() {
+        return SEXO;
+    }
+
+    public void setSEXO(String SEXO) {
+        this.SEXO = SEXO;
+    }
+
+    public String getNOMBRE() {
+        return NOMBRE;
+    }
+    public void setNOMBRE(String NOMBRE) {
+        this.NOMBRE = NOMBRE;
+    }
 }
