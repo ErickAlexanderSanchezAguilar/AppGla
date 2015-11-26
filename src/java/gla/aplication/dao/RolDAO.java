@@ -149,15 +149,15 @@ public class RolDAO implements InterfaceRolDAO {
     @Override
     public List<Rol> Listar_Rol_id(String id_rol) {
         this.conn = FactoryConnectionDB.open(FactoryConnectionDB.ORACLE);
-        String sql = "SELECT NO_ROL, ID_ROL ,ES_ROL FROM RHTR_ROL WHERE ID_ROL='" + id_rol + "'";
+        String sql = "SELECT ROL, IDROL ,EST_ROL FROM RHTR_ROL WHERE ID_ROL='" + id_rol + "'";
         List<Rol> list = new ArrayList<Rol>();
         try {
             ResultSet rs = this.conn.query(sql);
             while (rs.next()) {
                 Rol d = new Rol();
-                d.setNo_rol(rs.getString("no_Rol"));
-                d.setId_rol(rs.getString("id_rol"));
-                d.setEs_rol(rs.getString("es_rol"));
+                d.setNo_rol(rs.getString("ROL"));
+                d.setId_rol(rs.getString("IDROL"));
+                d.setEs_rol(rs.getString("EST_ROL"));
                 list.add(d);
             }
 
@@ -198,7 +198,7 @@ public class RolDAO implements InterfaceRolDAO {
             ResultSet rs = this.conn.query(sql);
             while (rs.next()) {
                 V_Privilegio d = new V_Privilegio();
-                d.setId_rol(rs.getString("id_rol"));
+                d.setId_rol(rs.getString("IDROL"));
                 d.setId_modulo(rs.getString("id_modulo"));
                 d.setNo_modulo(rs.getString("no_modulo"));
                 d.setIc_modulo(rs.getString("IC_MODULO"));
@@ -219,15 +219,15 @@ public class RolDAO implements InterfaceRolDAO {
     @Override
     public List<Map<String, ?>> List_rol() {
         this.conn = FactoryConnectionDB.open(FactoryConnectionDB.ORACLE);
-        String sql = "select * from RHTR_ROL";
-        List<Map<String,?>> list = new ArrayList<>();
+        String sql = "select * from IDROL";
+        List<Map<String, ?>> list = new ArrayList<>();
         try {
             ResultSet rs = this.conn.query(sql);
             while (rs.next()) {
-                Map<String,Object> rec= new HashMap<>();
-                rec.put("id_rol", rs.getString("id_rol"));
-                rec.put("no_rol", rs.getString("no_rol"));
-                rec.put("es_rol", rs.getString("es_rol"));
+                Map<String, Object> rec = new HashMap<>();
+                rec.put("id_rol", rs.getString("IDROL"));
+                rec.put("no_rol", rs.getString("ROL"));
+                rec.put("es_rol", rs.getString("EST_ROL"));
                 list.add(rec);
             }
 
@@ -242,12 +242,12 @@ public class RolDAO implements InterfaceRolDAO {
     @Override
     public List<Map<String, ?>> List_rol(String idRol) {
         this.conn = FactoryConnectionDB.open(FactoryConnectionDB.ORACLE);
-        String sql = "select * from RHTR_ROL where id_rol="+idRol;
-        List<Map<String,?>> list = new ArrayList<>();
+        String sql = "select * from RHTR_ROL where id_rol=" + idRol;
+        List<Map<String, ?>> list = new ArrayList<>();
         try {
             ResultSet rs = this.conn.query(sql);
             while (rs.next()) {
-                Map<String,Object> rec= new HashMap<>();
+                Map<String, Object> rec = new HashMap<>();
                 rec.put("id_rol", rs.getString("id_rol"));
                 rec.put("no_rol", rs.getString("no_rol"));
                 rec.put("es_rol", rs.getString("es_rol"));
