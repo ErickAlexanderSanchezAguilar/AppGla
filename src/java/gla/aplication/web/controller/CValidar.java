@@ -13,7 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import gla.aplication.interfaces.InterfaceUsuarioDAO;
-import gla.aplication.model.V_Usuario;
+import gla.aplication.model.v_Usuario;
 import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -47,8 +47,8 @@ public class CValidar extends HttpServlet {
             if (Usuario.equals("") && Clave.equals("")) {
                 out.print("o");
             } else {
-                List<V_Usuario> t_usuario = u.Validar_Logueo(Usuario, Clave);
-                V_Usuario user = new V_Usuario();
+                List<v_Usuario> t_usuario = u.Validar_Logueo(Usuario, Clave);
+                v_Usuario user = new v_Usuario();
                 int cant = t_usuario.size();
                 if (cant > 0) {
                     HttpSession sesion = request.getSession(true);

@@ -12,7 +12,7 @@ import java.util.List;
 import gla.aplication.factory.ConexionBD;
 import gla.aplication.factory.FactoryConnectionDB;
 import gla.aplication.interfaces.InterfaceUsuarioDAO;
-import gla.aplication.model.V_Usuario;
+import gla.aplication.model.v_Usuario;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -25,14 +25,14 @@ public class UsuarioDAO implements InterfaceUsuarioDAO {
     ConexionBD conn;
 
     @Override
-    public List<V_Usuario> Validar_Logueo(String usuario, String clave) {
+    public List<v_Usuario> Validar_Logueo(String usuario, String clave) {
         this.conn = FactoryConnectionDB.open(FactoryConnectionDB.ORACLE);
         String sql = "SELECT * FROM GLATL_USUARIOS where TRIM(USUARIO)='" + usuario.trim() + "' AND TRIM(PASSWORD)='" + clave.trim() + "'";
-        List<V_Usuario> list = new ArrayList<V_Usuario>();
+        List<v_Usuario> list = new ArrayList<v_Usuario>();
         try {
             ResultSet rs = this.conn.query(sql);
             while (rs.next()) {
-                V_Usuario v = new V_Usuario();
+                v_Usuario v = new v_Usuario();
                 v.setIDUSUARIO(rs.getString("IDUSUARIO"));                
                 list.add(v);
             }

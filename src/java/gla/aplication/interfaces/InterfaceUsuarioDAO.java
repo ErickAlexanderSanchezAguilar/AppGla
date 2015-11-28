@@ -6,7 +6,7 @@
 package gla.aplication.interfaces;
 
 import java.util.List;
-import gla.aplication.model.V_Usuario;
+import gla.aplication.model.v_Usuario;
 
 /**
  *
@@ -14,5 +14,5 @@ import gla.aplication.model.V_Usuario;
  */
 public interface InterfaceUsuarioDAO {
 
-    public List<V_Usuario> Validar_Logueo(String usuario, String clave);
+    public List<v_Usuario> Validar_Logueo(String usuario, String clave);
 }
