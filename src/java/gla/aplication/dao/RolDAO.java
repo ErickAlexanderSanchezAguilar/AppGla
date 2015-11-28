@@ -9,7 +9,6 @@ import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import gla.aplication.interfaces.InterfaceRolDAO;
@@ -48,13 +47,12 @@ public class RolDAO implements InterfaceRolDAO {
         }
 
         return list;
-
     }
 
     @Override
     public List<V_Privilegio> listarURL(String idrol, String id_modulo) {
         this.conn = FactoryConnectionDB.open(FactoryConnectionDB.ORACLE);
-        String sql = "select * from  RHVD_PRIVILEGIO where ID_ROL='" + idrol + "' and id_modulo='" + id_modulo + "'";
+        String sql = "select * from  GLATL_PRIVILEGIO where IDROL='" + idrol + "' and id_modulo='" + id_modulo + "'";
         List<V_Privilegio> list = new ArrayList<V_Privilegio>();
         try {
             ResultSet rs = this.conn.query(sql);
@@ -80,6 +78,11 @@ public class RolDAO implements InterfaceRolDAO {
     }
 
     @Override
+    public List<V_Privilegio> LISTAR_MODULOS(String idrol) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
     public void INSERT_ROLES(String no_rol, String es_rol) {
         CallableStatement cst;
         try {
@@ -89,6 +92,22 @@ public class RolDAO implements InterfaceRolDAO {
             cst.setString(1, id_rol);
             cst.setString(2, no_rol);
             cst.setString(3, es_rol);
+            cst.execute();
+        } catch (SQLException ex) {
+        } finally {
+            this.conn.close();
+        }
+    }
+
+    @Override
+    public void Mod_Rol(String Id_rol, String No_Rol, String Es_Rol) {
+        CallableStatement cst;
+        try {
+            this.conn = FactoryConnectionDB.open(FactoryConnectionDB.ORACLE);
+            cst = conn.conex.prepareCall("{CALL RHSP_MOD_ROL(?,?,?)}");
+            cst.setString(1, Id_rol);
+            cst.setString(2, No_Rol);
+            cst.setString(3, Es_Rol);
             cst.execute();
         } catch (SQLException ex) {
         } finally {
@@ -143,7 +162,6 @@ public class RolDAO implements InterfaceRolDAO {
             this.conn.close();
         }
         return list;
-
     }
 
     @Override
@@ -169,97 +187,18 @@ public class RolDAO implements InterfaceRolDAO {
     }
 
     @Override
-    public void Mod_Rol(String Id_rol, String No_Rol, String Es_Rol) {
-        CallableStatement cst;
-        try {
-            this.conn = FactoryConnectionDB.open(FactoryConnectionDB.ORACLE);
-            cst = conn.conex.prepareCall("{CALL RHSP_MOD_ROL(?,?,?)}");
-            cst.setString(1, Id_rol);
-            cst.setString(2, No_Rol);
-            cst.setString(3, Es_Rol);
-            cst.execute();
-        } catch (SQLException ex) {
-        } finally {
-            this.conn.close();
-        }
-    }
-
-    @Override
     public void Eliminar_rol(String id_Rol) {
-    }
-
-    @Override
-    public List<V_Privilegio> LISTAR_MODULOS(String idrol) {
-
-        this.conn = FactoryConnectionDB.open(FactoryConnectionDB.ORACLE);
-        String sql = " select DISTINCT(ID_MODULO) AS ID_MODULO,NO_MODULO ,DE_MODULO, IC_MODULO,ID_ROL from  RHVD_PRIVILEGIO WHERE ID_ROL='" + idrol + "'  ";
-        List<V_Privilegio> list = new ArrayList<V_Privilegio>();
-        try {
-            ResultSet rs = this.conn.query(sql);
-            while (rs.next()) {
-                V_Privilegio d = new V_Privilegio();
-                d.setId_rol(rs.getString("IDROL"));
-                d.setId_modulo(rs.getString("id_modulo"));
-                d.setNo_modulo(rs.getString("no_modulo"));
-                d.setIc_modulo(rs.getString("IC_MODULO"));
-                d.setDe_modulo(rs.getString("de_modulo"));
-                list.add(d);
-
-            }
-
-        } catch (SQLException e) {
-        } finally {
-            this.conn.close();
-        }
-
-        return list;
-
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public List<Map<String, ?>> List_rol() {
-        this.conn = FactoryConnectionDB.open(FactoryConnectionDB.ORACLE);
-        String sql = "select * from IDROL";
-        List<Map<String, ?>> list = new ArrayList<>();
-        try {
-            ResultSet rs = this.conn.query(sql);
-            while (rs.next()) {
-                Map<String, Object> rec = new HashMap<>();
-                rec.put("id_rol", rs.getString("IDROL"));
-                rec.put("no_rol", rs.getString("ROL"));
-                rec.put("es_rol", rs.getString("EST_ROL"));
-                list.add(rec);
-            }
-
-        } catch (SQLException e) {
-        } finally {
-            this.conn.close();
-        }
-
-        return list;
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public List<Map<String, ?>> List_rol(String idRol) {
-        this.conn = FactoryConnectionDB.open(FactoryConnectionDB.ORACLE);
-        String sql = "select * from RHTR_ROL where id_rol=" + idRol;
-        List<Map<String, ?>> list = new ArrayList<>();
-        try {
-            ResultSet rs = this.conn.query(sql);
-            while (rs.next()) {
-                Map<String, Object> rec = new HashMap<>();
-                rec.put("id_rol", rs.getString("id_rol"));
-                rec.put("no_rol", rs.getString("no_rol"));
-                rec.put("es_rol", rs.getString("es_rol"));
-                list.add(rec);
-            }
-
-        } catch (SQLException e) {
-        } finally {
-            this.conn.close();
-        }
-
-        return list;
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

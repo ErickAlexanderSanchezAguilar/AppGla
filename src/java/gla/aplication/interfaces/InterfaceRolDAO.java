@@ -11,7 +11,6 @@ import gla.aplication.model.Privilegio_Rol;
 
 import gla.aplication.model.Rol;
 import gla.aplication.model.V_Privilegio;
-import gla.aplication.model.V_Rol;
 
 /**
  *
