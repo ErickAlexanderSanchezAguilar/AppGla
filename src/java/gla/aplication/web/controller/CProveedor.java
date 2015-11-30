@@ -5,11 +5,13 @@
  */
 package gla.aplication.web.controller;
 
+import com.google.gson.Gson;
 import gla.aplication.dao.ProveedoresDAO;
 import gla.aplication.interfaces.InterfaceProveedores;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,7 +27,7 @@ import javax.servlet.http.HttpSession;
 @WebServlet(name = "proveedor", urlPatterns = {"/proveedor"})
 public class CProveedor extends HttpServlet {
 
-    InterfaceProveedores Proveedores = new ProveedoresDAO();
+    InterfaceProveedores prov = new ProveedoresDAO();
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -45,62 +47,71 @@ public class CProveedor extends HttpServlet {
         String opc = request.getParameter("opc");
         HttpSession sesion = request.getSession(true);
         String iduser = (String) sesion.getAttribute("IDUSER");
-        try {
-            if (opc.equals("REGISTRAR")) {
-                out.print("NO SE PUDO CONECTAR");
-                String no_pro = request.getParameter("NOMBRE");
-                String direc = request.getParameter("DIRECCION");
-                String tele = request.getParameter("TELEFONO");
-                String estado = request.getParameter("ESTADO");
-                Proveedores.INSERT_PROVEEDORES(no_pro,direc,tele, estado);
-                out.print("NO SE PUDO CONECTAR");
 
+        try {
+            if (opc.equals("mat_rol")) {
+                response.sendRedirect("vista/REGISTRO/Reg_Roles.jsp");
+            }
+            if (opc.equals("Listar_Rol")) {
+                //getServletContext().setAttribute("List_Rol", rol.List_Rol());
+                //response.sendRedirect("vista/REGISTRO/Reg_Roles.jsp");
+                /*List<Map<String, ?>> list = rol.List_roless();
+                 rpta.put("rpta", "1");
+                 rpta.put("lista", list);*/
+            }
+            if (opc.equals("Modificar_Rol")) {
+                /* String idrol = request.getParameter("idrol");
+                 getServletContext().setAttribute("Listar_Rol_id", rol.Listar_Rol_id(idrol));
+                 getServletContext().setAttribute("List_Rol", rol.List_Rol());
+                 response.sendRedirect("vista/REGISTRO/Reg_Roles.jsp");*/
+            }
+            if (opc.equals("Modificar")) {
+                /* String idrol = request.getParameter("id_rol");
+                 String no_rol = request.getParameter("Nombre_Rol");
+                 String Es_rol = request.getParameter("Es_rol");
+                 rol.Mod_Rol(idrol, no_rol, Es_rol);
+                 getServletContext().setAttribute("List_Rol", rol.List_Rol());
+                 response.sendRedirect("vista/REGISTRO/Reg_Roles.jsp");*/
+            }
+            if (opc.equals("Activar_Rol")) {
+                /* String idrol = request.getParameter("idrol");
+                 rol.Activar_Roles(idrol);
+                 getServletContext().setAttribute("List_Rol", rol.List_Rol());
+                 response.sendRedirect("vista/REGISTRO/Reg_Roles.jsp");*/
+            }
+            if (opc.equals("Desactivar_Rol")) {
+                /*String idrol = request.getParameter("idrol");
+                 rol.Desactivar_Roles(idrol);
+                 getServletContext().setAttribute("List_Rol", rol.List_Rol());
+                 response.sendRedirect("vista/REGISTRO/Reg_Roles.jsp");*/
+            }
+            if (opc.equals("Eliminar_Rol")) {
+                /* String idrol = request.getParameter("idrol");
+                 rol.Desactivar_Roles(idrol);
+                 getServletContext().setAttribute("List_Rol", rol.List_Rol());
+                 response.sendRedirect("vista/REGISTRO/Reg_Roles.jsp");*/
+            }
+            if (opc.equals("REGISTRAR")) {
+                String NOM_PRO = request.getParameter("NOMBRE");
+                String DIREC = request.getParameter("DIRECCION");
+                String TELEF = request.getParameter("TELEFONO");
+                String ESTADO = request.getParameter("ESTADO");
+                out.print("NO SE PUDO CONECTAR");
+                prov.INSERT_PROVEEDORES(NOM_PRO, DIREC, ESTADO, ESTADO);
                 out.print(request.getParameter("ESTADO"));
                 //getServletContext().setAttribute("List_Rol", rol.List_Rol());
                 response.sendRedirect("vista/REGISTRO/Reg_Roles.jsp");
             }
-        } finally {
-            out.close();
+        } catch (Exception e) {
+
+            rpta.put("rpta", "-1");
+            rpta.put("mensaje", e.getMessage());
         }
-    }
+        Gson gson = new Gson();
+        out.println(gson.toJson(rpta));
+        out.flush();
+        out.close();
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
     }
-
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
 
 }

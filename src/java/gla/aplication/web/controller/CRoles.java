@@ -94,7 +94,7 @@ public class CRoles extends HttpServlet {
             if (opc.equals("REGISTRAR")) {
                 String no_rol = request.getParameter("NOMBRE");
                 String ESTADO =request.getParameter("ESTADO");
-                out.print("NO SE PUDO CONECTAR");
+                //out.print("NO SE PUDO CONECTAR");
                 if(ESTADO==null){
                     ESTADO="0";
                     rol.INSERT_ROLES(no_rol, ESTADO);

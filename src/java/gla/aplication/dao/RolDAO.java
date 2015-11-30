@@ -5,20 +5,20 @@
  */
 package gla.aplication.dao;
 
+import gla.aplication.factory.ConexionBD;
+import gla.aplication.factory.FactoryConnectionDB;
+import gla.aplication.interfaces.InterfaceRolDAO;
+import gla.aplication.model.Privilegio_Rol;
+import gla.aplication.model.Rol;
+import gla.aplication.model.V_Privilegio;
 import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import gla.aplication.interfaces.InterfaceRolDAO;
-import gla.aplication.factory.ConexionBD;
-import gla.aplication.factory.FactoryConnectionDB;
-import gla.aplication.model.Privilegio_Rol;
-import gla.aplication.model.Rol;
-import gla.aplication.model.V_Privilegio;
-
 
 /**
  *
@@ -197,11 +197,11 @@ public class RolDAO implements InterfaceRolDAO {
     public List<Map<String, ?>> List_roless() {
         this.conn = FactoryConnectionDB.open(FactoryConnectionDB.ORACLE);
         String sql = "select * from GLATL_ROL";
-        List<Map<String, ?>> list = new ArrayList<>();
+        List<Map<String, ?>> list = new ArrayList<Map<String, ?>>();
         try {
             ResultSet rs = this.conn.query(sql);
             while (rs.next()) {
-                Map<String, Object> rec = new HashMap<>();
+                Map<String, Object> rec = new HashMap<String, Object>();
                 rec.put("id_rol", rs.getString("IDROL"));
                 rec.put("no_rol", rs.getString("ROL"));
                 rec.put("es_rol", rs.getString("EST_ROL"));
@@ -218,16 +218,16 @@ public class RolDAO implements InterfaceRolDAO {
 
     @Override
     public List<Map<String, ?>> List_rol(String idRol) {
-    this.conn = FactoryConnectionDB.open(FactoryConnectionDB.ORACLE);
-        String sql = "select * from RHTR_ROL where id_rol="+idRol;
-        List<Map<String,?>> list = new ArrayList<>();
+        this.conn = FactoryConnectionDB.open(FactoryConnectionDB.ORACLE);
+        String sql = "select * from GLATL_ROL where IDROL= " + idRol;
+        List<Map<String, ?>> list = new ArrayList<Map<String, ?>>();
         try {
             ResultSet rs = this.conn.query(sql);
             while (rs.next()) {
-                Map<String,Object> rec= new HashMap<>();
-                rec.put("id_rol", rs.getString("id_rol"));
-                rec.put("no_rol", rs.getString("no_rol"));
-                rec.put("es_rol", rs.getString("es_rol"));
+                Map<String, Object> rec = new HashMap<String, Object>();
+                rec.put("id_rol", rs.getString("IDROL"));
+                rec.put("no_rol", rs.getString("ROL"));
+                rec.put("es_rol", rs.getString("EST_ROL"));
                 list.add(rec);
             }
 
@@ -236,6 +236,7 @@ public class RolDAO implements InterfaceRolDAO {
             this.conn.close();
         }
 
-        return list;}
+        return list;
+    }
 
 }

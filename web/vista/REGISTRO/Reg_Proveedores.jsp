@@ -39,13 +39,13 @@ and open the template in the editor.
                     <section class="col col-xs-6">
                         <label class="label">Direccion</label>
                         <label class=" input">
-                            <input type="text" name="direccion" class="form-control" >
+                            <input type="text" name="DIRECCION" class="form-control" >
                         </label>
                     </section>
                     <section class="col col-xs-6">
                         <label class="label">Telefono</label>
                         <label class=" input">
-                            <input type="text" name="Telefono" class="form-control" >
+                            <input type="text" name="TELEFONO" class="form-control" >
                         </label>
                     </section>
                     <section class="col col-xs-4">
@@ -170,7 +170,7 @@ and open the template in the editor.
                 listar_tabla();
                 $('.reg').click(function () {
                     var data = $('.formm').serialize();
-                    $.post("../../Proveedores?opc=REGISTRAR", data, function () {
+                    $.post("../../Proveedor?opc=REGISTRAR", data, function () {
                         list_rol();
                         $.smallBox({
                             title: "Registrar Proveedor",
