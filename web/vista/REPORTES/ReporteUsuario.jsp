@@ -419,10 +419,12 @@
     <script>
 
             function ListarUsuario() {
-                var a = $(".nom").val();
+                //var a = $(".nom").val();
                 var b = $("#ListarUsuario");
                 var texto = '';
-                $.post("../reporte", "opc=ListarUsuario&nombre=" + a, function (objJson) {
+               // alert()
+               //$.post()
+                $.post("../../reporte?opc=ListarUsuario", function (objJson) {
                     if (objJson.rpta == -1) {
                         alert(objJson.mensaje);
                         return;

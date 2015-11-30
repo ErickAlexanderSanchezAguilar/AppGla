@@ -5,24 +5,27 @@
  */
 package gla.aplication.web.controller;
 
-import gla.aplication.dao.ReporteDAO;
-import gla.aplication.interfaces.InterfaceReporte;
+import gla.aplication.dao.ProveedoresDAO;
+import gla.aplication.interfaces.InterfaceProveedores;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
+import java.util.HashMap;
 import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Alexander
  */
-@WebServlet(name = "reporte", urlPatterns = {"/reporte"})
-public class CReporte extends HttpServlet {
+@WebServlet(name = "proveedor", urlPatterns = {"/proveedor"})
+public class CProveedor extends HttpServlet {
+
+    InterfaceProveedores Proveedores = new ProveedoresDAO();
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,24 +36,31 @@ public class CReporte extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-     InterfaceReporte us = new ReporteDAO();
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
+        Map<String, Object> rpta = new HashMap<String, Object>();
         String opc = request.getParameter("opc");
+        HttpSession sesion = request.getSession(true);
+        String iduser = (String) sesion.getAttribute("IDUSER");
         try {
-            if (opc.equals("ListarUsuario")) {
+            if (opc.equals("REGISTRAR")) {
                 out.print("NO SE PUDO CONECTAR");
-                //String Nom = request.getParameter("nombre");
-               // String Ape_pa = request.getParameter("paterno");
-                List<Map<String, ?>> lista = us.ListarUsuaio();
-                response.sendRedirect("vista/REPORTES/ReporteUsuario.jsp");
+                String no_pro = request.getParameter("NOMBRE");
+                String direc = request.getParameter("DIRECCION");
+                String tele = request.getParameter("TELEFONO");
+                String estado = request.getParameter("ESTADO");
+                Proveedores.INSERT_PROVEEDORES(no_pro,direc,tele, estado);
+                out.print("NO SE PUDO CONECTAR");
+
+                out.print(request.getParameter("ESTADO"));
+                //getServletContext().setAttribute("List_Rol", rol.List_Rol());
+                response.sendRedirect("vista/REGISTRO/Reg_Roles.jsp");
             }
-            else{
-                //out.print("NO SE PUDO CONECTAR");
-            }
-        } catch (Exception e) {
+        } finally {
+            out.close();
         }
     }
 

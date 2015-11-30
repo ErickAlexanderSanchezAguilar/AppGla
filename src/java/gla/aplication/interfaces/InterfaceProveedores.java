@@ -5,13 +5,12 @@
  */
 package gla.aplication.interfaces;
 
-import java.util.List;
-import java.util.Map;
-
 /**
  *
- * @author ALFA
+ * @author Alexander
  */
-public interface InterfaceReporte {
-    public List<Map<String, ?>> ListarUsuaio();
+public interface InterfaceProveedores {
+
+    public void INSERT_PROVEEDORES(String no_pro, String direc, String tele, String estado);
+    
 }
