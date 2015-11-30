@@ -30,8 +30,8 @@ public class ReporteDAO implements InterfaceReporte {
     try {
             this.conn = FactoryConnectionDB.open(FactoryConnectionDB.ORACLE);
             String sql="SELECT * FROM GLATL_USUARIOS ";
-            sql += (!Nom.equals("")) ? "Where UPPER(CO_APS)='" + Nom.trim().toUpperCase() + "'" : "";
-            sql += (!Ape_pa.equals("")) ? "Where UPPER(CO_APS)='" + Ape_pa.trim().toUpperCase() + "'" : "";
+            sql += (!Nom.equals("")) ? "Where UPPER(NOMBRE)='" + Nom.trim().toUpperCase() + "'" : "";
+            sql += (!Ape_pa.equals("")) ? "Where UPPER(APE_PAT)='" + Ape_pa.trim().toUpperCase() + "'" : "";
             ResultSet rs = this.conn.query(sql);
             rs.close();
         }catch (SQLException e) {

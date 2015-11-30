@@ -38,7 +38,7 @@ public interface InterfaceRolDAO {
 
     public void Eliminar_rol(String id_Rol);
     
-    public List<Map<String,?>> List_rol();
+    public List<Map<String,?>> List_roless();
     public List<Map<String,?>> List_rol(String idRol);
 
 }

@@ -9,6 +9,7 @@ import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import gla.aplication.interfaces.InterfaceRolDAO;
@@ -18,9 +19,10 @@ import gla.aplication.model.Privilegio_Rol;
 import gla.aplication.model.Rol;
 import gla.aplication.model.V_Privilegio;
 
+
 /**
  *
- * @author Jose
+ * @author ALEXANDER
  */
 public class RolDAO implements InterfaceRolDAO {
 
@@ -29,15 +31,15 @@ public class RolDAO implements InterfaceRolDAO {
     @Override
     public List<Rol> List_Rol() {
         this.conn = FactoryConnectionDB.open(FactoryConnectionDB.ORACLE);
-        String sql = "select * from RHTR_ROL";
+        String sql = "select * from GLATL_ROL";
         List<Rol> list = new ArrayList<Rol>();
         try {
             ResultSet rs = this.conn.query(sql);
             while (rs.next()) {
                 Rol r = new Rol();
-                r.setId_rol(rs.getString("id_rol").trim());
-                r.setNo_rol(rs.getString("no_rol").trim());
-                r.setEs_rol(rs.getString("es_rol").trim());
+                r.setId_rol(rs.getString("IDROL").trim());
+                r.setNo_rol(rs.getString("IDROL").trim());
+                r.setEs_rol(rs.getString("EST_ROL").trim());
                 list.add(r);
             }
 
@@ -88,7 +90,7 @@ public class RolDAO implements InterfaceRolDAO {
         try {
             String id_rol = "";
             this.conn = FactoryConnectionDB.open(FactoryConnectionDB.ORACLE);
-            cst = conn.conex.prepareCall("{CALL RHSP_INSERT_ROL( ?,?,?)}");
+            cst = conn.conex.prepareCall("{CALL GLASP_INSERT_ROL( ?,?,?)}");
             cst.setString(1, id_rol);
             cst.setString(2, no_rol);
             cst.setString(3, es_rol);
@@ -104,7 +106,7 @@ public class RolDAO implements InterfaceRolDAO {
         CallableStatement cst;
         try {
             this.conn = FactoryConnectionDB.open(FactoryConnectionDB.ORACLE);
-            cst = conn.conex.prepareCall("{CALL RHSP_MOD_ROL(?,?,?)}");
+            cst = conn.conex.prepareCall("{CALL GLASP_MOD_ROL(?,?,?)}");
             cst.setString(1, Id_rol);
             cst.setString(2, No_Rol);
             cst.setString(3, Es_Rol);
@@ -120,7 +122,7 @@ public class RolDAO implements InterfaceRolDAO {
         CallableStatement cst;
         try {
             this.conn = FactoryConnectionDB.open(FactoryConnectionDB.ORACLE);
-            cst = conn.conex.prepareCall("{CALL RHSP_DESACTIVAR_ROL(?)}");
+            cst = conn.conex.prepareCall("{CALL GLASP_DESACTIVAR_ROL(?)}");
             cst.setString(1, id_rol);
             cst.execute();
         } catch (SQLException ex) {
@@ -192,13 +194,48 @@ public class RolDAO implements InterfaceRolDAO {
     }
 
     @Override
-    public List<Map<String, ?>> List_rol() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Map<String, ?>> List_roless() {
+        this.conn = FactoryConnectionDB.open(FactoryConnectionDB.ORACLE);
+        String sql = "select * from GLATL_ROL";
+        List<Map<String, ?>> list = new ArrayList<>();
+        try {
+            ResultSet rs = this.conn.query(sql);
+            while (rs.next()) {
+                Map<String, Object> rec = new HashMap<>();
+                rec.put("id_rol", rs.getString("IDROL"));
+                rec.put("no_rol", rs.getString("ROL"));
+                rec.put("es_rol", rs.getString("EST_ROL"));
+                list.add(rec);
+            }
+
+        } catch (SQLException e) {
+        } finally {
+            this.conn.close();
+        }
+
+        return list;
     }
 
     @Override
     public List<Map<String, ?>> List_rol(String idRol) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    this.conn = FactoryConnectionDB.open(FactoryConnectionDB.ORACLE);
+        String sql = "select * from RHTR_ROL where id_rol="+idRol;
+        List<Map<String,?>> list = new ArrayList<>();
+        try {
+            ResultSet rs = this.conn.query(sql);
+            while (rs.next()) {
+                Map<String,Object> rec= new HashMap<>();
+                rec.put("id_rol", rs.getString("id_rol"));
+                rec.put("no_rol", rs.getString("no_rol"));
+                rec.put("es_rol", rs.getString("es_rol"));
+                list.add(rec);
+            }
+
+        } catch (SQLException e) {
+        } finally {
+            this.conn.close();
+        }
+
+        return list;}
 
 }

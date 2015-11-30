@@ -54,11 +54,12 @@ public class CValidar extends HttpServlet {
                     HttpSession sesion = request.getSession(true);
                     sesion.setAttribute("ID_USER", user.getIDUSUARIO());
                     sesion.setAttribute("NOMBRE", user.getUSUARIO());
-                    //sesion.setAttribute("AP_P", user.getAPE_PAT());
+                    sesion.setAttribute("AP_P", user.getAPE_PAT());
                     sesion.setAttribute("AP_M", user.getAPE_MAT());
                     response.sendRedirect("Principal.html");
                 } else {
-                    out.print("NO SE PUDO CONECTAR");
+                    response.sendRedirect("index.html");
+                    //out.print("NO SE PUDO CONECTAR");
                 }
             }
             

@@ -53,7 +53,7 @@
         </style>
     </head>
     <body>
-        <form class="form-inline validarform" id="frm_filtro2" method="post" action="../../Imprimir" name="formulario" onclick="return marcado();">
+        <form class="form-inline validarform">
             <div class="spacing">
                 <center><h1 class="spacing" style="font-weight: bold;">REPORTE DE TODOS LOS USUARIO</h1></center> 
             </div>
@@ -64,9 +64,13 @@
                         <input type="text"  class="form-control nom" placeholder="NOMBRE" name="" style="width: 150px"/>
                     </div>
                     <div class="form-group" >
-                        <label>APELLIDO</label><br>
-                        <input type="text"  class="form-control ape" placeholder="APELLIDO" name=""  length="45" style="width: 150px"/>
-                    </div>   
+                        <label>APELLIDO PATERNO</label><br>
+                        <input type="text"  class="form-control ape_pat" placeholder="APELLIDO" name=""  length="45" style="width: 150px"/>
+                    </div>
+                    <div class="form-group" >
+                        <label>APELLIDO MATERNO</label><br>
+                        <input type="text"  class="form-control ape_mat" placeholder="APELLIDO" name=""  length="45" style="width: 150px"/>
+                    </div>
                     <br>
                     <div class="row">
                         <div class="form-group">  
@@ -454,6 +458,7 @@
                 );
                 $("#btncancel").click(
                         function () {
+                            $('.div_t').empty();
                             document.formulario.reset();
                             b.empty();
                             html = '<tr><td colspan="8" align="center">Haga la busqueda por algunos de los filtros...</td></tr>'
