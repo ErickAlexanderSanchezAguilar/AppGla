@@ -13,7 +13,9 @@ import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -29,7 +31,7 @@ public class ProveedoresDAO implements InterfaceProveedores {
         try {
             String idpro = "";
             this.conn = FactoryConnectionDB.open(FactoryConnectionDB.ORACLE);
-            cst = conn.conex.prepareCall("{CALL GLASP_INSERT_ROL( ?,?,?,?,?)}");
+            cst = conn.conex.prepareCall("{CALL GLASP_INSERT_PROVEEDOR( ?,?,?,?,?)}");
             cst.setString(1, idpro);
             cst.setString(2, no_pro);
             cst.setString(3, direc);
@@ -41,5 +43,31 @@ public class ProveedoresDAO implements InterfaceProveedores {
             this.conn.close();
         }
 
+    }
+
+    @Override
+    public List<Map<String, ?>> List_proveedores() {
+        this.conn = FactoryConnectionDB.open(FactoryConnectionDB.ORACLE);
+        String sql = "select * from GLATC_PROVEEDORES";
+        List<Map<String, ?>> list = new ArrayList<Map<String, ?>>();
+        try {
+            ResultSet rs = this.conn.query(sql);
+  
+            while (rs.next()) {
+                Map<String, Object> rec = new HashMap<String, Object>();
+                rec.put("IDPROVEEDOR", rs.getString("IDPROVEEDOR"));
+                rec.put("NOMBRE", rs.getString("NOMBRE"));
+                rec.put("DIRECCION", rs.getString("DIRECCION"));
+                rec.put("TELEFONO", rs.getString("TELEFONO"));
+                rec.put("EST_PROVEEDOR", rs.getString("EST_PROVEEDOR"));
+                list.add(rec);
+            }
+
+        } catch (SQLException e) {
+        } finally {
+            this.conn.close();
+        }
+
+        return list;
     }
 }

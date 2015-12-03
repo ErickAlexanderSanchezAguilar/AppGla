@@ -5,6 +5,9 @@
  */
 package gla.aplication.interfaces;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  *
  * @author Alexander
@@ -12,5 +15,7 @@ package gla.aplication.interfaces;
 public interface InterfaceProveedores {
 
     public void INSERT_PROVEEDORES(String no_pro, String direc, String tele, String estado);
+
+    public List<Map<String, ?>> List_proveedores();
     
 }

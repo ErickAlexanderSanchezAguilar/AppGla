@@ -50,14 +50,12 @@ public class CProveedor extends HttpServlet {
 
         try {
             if (opc.equals("mat_rol")) {
-                response.sendRedirect("vista/REGISTRO/Reg_Roles.jsp");
+                response.sendRedirect("vista/REGISTRO/Reg_Proveedores.jsp");
             }
             if (opc.equals("Listar_Rol")) {
-                //getServletContext().setAttribute("List_Rol", rol.List_Rol());
-                //response.sendRedirect("vista/REGISTRO/Reg_Roles.jsp");
-                /*List<Map<String, ?>> list = rol.List_roless();
+                List<Map<String, ?>> list = prov.List_proveedores();
                  rpta.put("rpta", "1");
-                 rpta.put("lista", list);*/
+                 rpta.put("lista", list);
             }
             if (opc.equals("Modificar_Rol")) {
                 /* String idrol = request.getParameter("idrol");
@@ -92,12 +90,13 @@ public class CProveedor extends HttpServlet {
                  response.sendRedirect("vista/REGISTRO/Reg_Roles.jsp");*/
             }
             if (opc.equals("REGISTRAR")) {
+                 out.print("NO SE PUDO CONECTAR");
                 String NOM_PRO = request.getParameter("NOMBRE");
                 String DIREC = request.getParameter("DIRECCION");
                 String TELEF = request.getParameter("TELEFONO");
                 String ESTADO = request.getParameter("ESTADO");
-                out.print("NO SE PUDO CONECTAR");
-                prov.INSERT_PROVEEDORES(NOM_PRO, DIREC, ESTADO, ESTADO);
+               
+                prov.INSERT_PROVEEDORES(NOM_PRO, DIREC, TELEF, ESTADO);
                 out.print(request.getParameter("ESTADO"));
                 //getServletContext().setAttribute("List_Rol", rol.List_Rol());
                 response.sendRedirect("vista/REGISTRO/Reg_Roles.jsp");

@@ -5,27 +5,21 @@
  */
 package gla.aplication.web.controller;
 
-import gla.aplication.dao.UsuarioDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
-import gla.aplication.interfaces.InterfaceUsuarioDAO;
-import gla.aplication.model.v_Usuario;
-import java.util.List;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Alexander
  */
-@WebServlet(name = "validar", urlPatterns = {"/validar"})
-public class CValidar extends HttpServlet {
-    
-    InterfaceUsuarioDAO u = new UsuarioDAO();
+@WebServlet(name = "direccionar", urlPatterns = {"/direccionar"})
+public class CDireccionar extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,29 +34,20 @@ public class CValidar extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        String Usuario = request.getParameter("Usuario");
-        String Clave = request.getParameter("Password");
         String opc = request.getParameter("opc");
-        if (opc.equals("validar")) {
-            if (Usuario.equals("") && Clave.equals("")) {
-                out.print("o");
-            } else {
-                List<v_Usuario> t_usuario = u.Validar_Logueo(Usuario, Clave);
-                v_Usuario user = new v_Usuario();
-                int cant = t_usuario.size();
-                if (cant > 0) {
-                    HttpSession sesion = request.getSession(true);
-                    sesion.setAttribute("ID_USER", user.getIDUSUARIO());
-                    sesion.setAttribute("NOMBRE", user.getUSUARIO());
-                    sesion.setAttribute("AP_P", user.getAPE_PAT());
-                    sesion.setAttribute("AP_M", user.getAPE_MAT());
-                    response.sendRedirect("principal.jsp");
-                } else {
-                    response.sendRedirect("index.html");
-                    //out.print("NO SE PUDO CONECTAR");
-                }
+        try {
+            if (opc.equals("Reg_Roles")) {
+                response.sendRedirect("vista/REGISTRO/Reg_Roles.jsp?opc=Reg_Roles");
             }
-            
+            if (opc.equals("Reg_Proveedores")) {
+                response.sendRedirect("vista/REGISTRO/Reg_Proveedores.jsp?opc=Reg_Proveedores");
+            }
+            if (opc.equals("principal")) {
+                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/principal.jsp");
+                dispatcher.forward(request, response);
+            }
+        } finally {
+            out.close();
         }
     }
 

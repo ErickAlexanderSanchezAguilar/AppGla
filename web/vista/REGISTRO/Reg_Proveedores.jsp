@@ -170,7 +170,7 @@ and open the template in the editor.
                 listar_tabla();
                 $('.reg').click(function () {
                     var data = $('.formm').serialize();
-                    $.post("../../Proveedor?opc=REGISTRAR", data, function () {
+                    $.post("../../proveedor?opc=REGISTRAR", data, function () {
                         list_rol();
                         $.smallBox({
                             title: "Registrar Proveedor",
