@@ -69,7 +69,9 @@ and open the template in the editor.
                     <thead>
                         <tr>
                             <th class="text-center semi-bold">Nro</th>
-                            <th class="text-center semi-bold">Rol</th>
+                            <th class="text-center semi-bold">Nombre</th>
+                            <th class="text-center semi-bold">Dirección</th>
+                            <th class="text-center semi-bold">Telefono</th>
                             <th class="text-center semi-bold">Estado</th>
                             <th class="text-center semi-bold">Opciones</th>
                         </tr>

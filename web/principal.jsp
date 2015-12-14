@@ -157,6 +157,7 @@
                                 <li><a class="active" href="">MANTENIMIENTO</a></li>
                                 <li><a class="activateve" href="direccionar?opc=Reg_Proveedores"><i class="fa fa-circle-o"></i>NUEVO PROVEEDOR</a></li>
                                 <li><a href="direccionar?opc=Reg_Roles"><i class="fa fa-circle-o"></i>NUEVO ROL</a></li>
+                                <li><a href="direccionar?opc=Reg_Clientes"><i class="fa fa-circle-o"></i>NUEVO Cliente</a></li>
                                 <li><a href="#">NUEVO PRIVILEGIO</a></li>
                             </ul>
                         </li>

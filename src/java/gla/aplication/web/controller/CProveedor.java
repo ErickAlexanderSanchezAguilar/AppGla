@@ -24,7 +24,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Alexander
  */
-@WebServlet(name = "proveedor", urlPatterns = {"/proveedor"})
+@WebServlet(name = "Proveedor", urlPatterns = {"/Proveedor"})
 public class CProveedor extends HttpServlet {
 
     InterfaceProveedores prov = new ProveedoresDAO();

@@ -25,29 +25,64 @@ and open the template in the editor.
     </head>
     <body>
         <header>
-            <h1 class="page-title text-center">Agregar Roles</h1>
+            <h1 class="page-title text-center">Registro de Clientes</h1>
         </header>
         <div class="well">
             <form class="smart-form formm">
                 <div class="row">
                     <section class="col col-xs-6">
-                        <label class="label">Nombre del Rol</label>
+                        <label class="label">Nombre</label>
                         <label class=" input">
                             <input type="text" name="NOMBRE" class="form-control" >
                         </label>
                     </section>
-                    <section class="col col-xs-4">
-                        <label class="label">Estado</label>
+                    <section class="col col-xs-6">
+                        <label class="label">Apellido Paterno</label>
+                        <label class=" input">
+                            <input type="text" name="PAT" class="form-control" >
+                        </label>
+                    </section>
+                    <section class="col col-xs-6">
+                        <label class="label">Apellido Materno</label>
+                        <label class=" input">
+                            <input type="text" name="MAT" class="form-control" >
+                        </label>
+                    </section>
+                    <section class="col col-xs-6">
+                        <label class="label">Dirección</label>
+                        <label class=" input">
+                            <input type="text" name="NOMBRE" class="form-control" >
+                        </label>
+                    </section><section class="col col-xs-6">
+                        <label class="label">Email</label>
+                        <label class=" input">
+                            <input type="email" name="EMAIL" class="form-control" >
+                        </label>
+                    </section>
+                    <section class="col col-xs-1" >
+                        <label class="label">Sexo</label>
                         <label class="select">
-                            <select name="ESTADO">
-                                <option value="1">Activado</option>
-                                <option>Desactivado</option>
+                            <select name="SEXO">
+                                <option value="M">M</option>
+                                <option value="F">F</option>
                             </select>
                             <i></i></label>
                     </section>
                     <section class="col col-xs-2">
-                        <input type="button" name="opc"  class="btn btn-primary btn-block reg" style="margin-top: 25px;height: 32px;" value="Registrar">
+                        <label class="label">Tipo Cliente</label>
+                        <label class="select">
+                            <select name="TIPO">
+                                <option>Seccionar</option>
+                                <option value="M">NATURAL</option>
+                                <option value="F">JURIDICA</option>
+                            </select>
+                            <i></i></label>
                     </section>
+                    <div class="row">
+                        <section class="col col-xs-2">
+                            <input type="button" name="opc"  class="btn btn-primary btn-block reg" style="margin-top: 25px;height: 32px;" value="Registrar">
+                        </section>
+                    </div>
                 </div>
             </form>
         </div>
@@ -57,8 +92,11 @@ and open the template in the editor.
                     <thead>
                         <tr>
                             <th class="text-center semi-bold">Nro</th>
-                            <th class="text-center semi-bold">Rol</th>
-                            <th class="text-center semi-bold">Estado</th>
+                            <th class="text-center semi-bold">Nombre</th>
+                            <th class="text-center semi-bold">Apellidos </th>
+                            <th class="text-center semi-bold">Sexo</th>
+                            <th class="text-center semi-bold">Direccion</th>
+                            <th class="text-center semi-bold"></th>
                             <th class="text-center semi-bold">Opciones</th>
                         </tr>
                     </thead>
@@ -74,31 +112,72 @@ and open the template in the editor.
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Editar Rol</h4>
+                        <h4 class="modal-title">Editar Cliente</h4>
                     </div>
 
                     <div class="modal-body">
                         <form class="smart-form">
                             <div class="row">
-                                <section class="col col-xs-12">
+                                <section class="col col-xs-6">
                                     <label class="label">Nombre</label>
                                     <label class=" input">
-                                        <input type="text" name="NOMBRE" class="form-control modNombre" >
+                                        <input type="text" name="NOMBRE" class="form-control" >
                                     </label>
-                                </section> 
+                                </section>
                             </div>
                             <div class="row">
-                                <section class="col col-xs-12">
-                                    <label class="label">Estado</label>
-                                    <label class="select">
-                                        <select name="ESTADO" class="modEstado">
-                                            <option value="1">Activado</option>
-                                            <option value="0">Desactivado</option>
-                                        </select>
-                                        <i></i></label>
-                                </section>  
+                                <section class="col col-xs-6">
+                                    <label class="label">Apellido Paterno</label>
+                                    <label class=" input">
+                                        <input type="text" name="PAT" class="form-control" >
+                                    </label>
+                                </section>
                             </div>
-
+                            <div class="row">
+                            <section class="col col-xs-6">
+                                <label class="label">Apellido Materno</label>
+                                <label class=" input">
+                                    <input type="text" name="MAT" class="form-control" >
+                                </label>
+                            </section>
+                            </div>
+                            <div class="row">
+                            <section class="col col-xs-6">
+                                <label class="label">Dirección</label>
+                                <label class=" input">
+                                    <input type="text" name="NOMBRE" class="form-control" >
+                                </label>
+                            </section>
+                            </div>
+                            <div class="row">
+                            <section class="col col-xs-6">
+                                <label class="label">Email</label>
+                                <label class=" input">
+                                    <input type="email" name="EMAIL" class="form-control" >
+                                </label>
+                            </section>
+                            </div>
+                            <div class="row">
+                            <section class="col col-xs-2" >
+                                <label class="label">Sexo</label>
+                                <label class="select">
+                                    <select name="SEXO">
+                                        <option value="M">M</option>
+                                        <option value="F">F</option>
+                                    </select>
+                                    <i></i></label>
+                            </section>
+                            <section class="col col-xs-4">
+                                <label class="label">Tipo Cliente</label>
+                                <label class="select">
+                                    <select name="TIPO">
+                                        <option>Seccionar</option>
+                                        <option value="M">NATURAL</option>
+                                        <option value="F">JURIDICA</option>
+                                    </select>
+                                    <i></i></label>
+                            </section>
+                            </div>
 
                         </form>  
                     </div>
@@ -253,7 +332,7 @@ and open the template in the editor.
                     $('.cont_t').append(text);
                 }
                 function listar_tabla() {
-                    $.post("../../../Privilegio?opc=ListPrivilegio", function (objJson) {
+                    $.post("../../Privilegio?opc=ListPrivilegio", function (objJson) {
                         var lista = objJson.Lista;
                     });
                 }

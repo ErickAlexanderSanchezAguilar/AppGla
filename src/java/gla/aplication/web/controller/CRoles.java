@@ -50,11 +50,11 @@ public class CRoles extends HttpServlet {
         
         try {
             if (opc.equals("mat_rol")) {
-                response.sendRedirect("vista/REGISTRO/Reg_Roles.jsp");
+                response.sendRedirect("vista/USUARIO/Reg_Roles.jsp");
             }
             if (opc.equals("Listar_Rol")) {
                 //getServletContext().setAttribute("List_Rol", rol.List_Rol());
-                //response.sendRedirect("vista/REGISTRO/Reg_Roles.jsp");
+                //response.sendRedirect("vista/USUARIO/Reg_Roles.jsp");
                 List<Map<String, ?>> list = rol.List_roless();
                 rpta.put("rpta", "1");
                 rpta.put("lista", list);
@@ -63,7 +63,7 @@ public class CRoles extends HttpServlet {
                 String idrol = request.getParameter("idrol");
                 getServletContext().setAttribute("Listar_Rol_id", rol.Listar_Rol_id(idrol));
                 getServletContext().setAttribute("List_Rol", rol.List_Rol());
-                response.sendRedirect("vista/REGISTRO/Reg_Roles.jsp");
+                response.sendRedirect("vista/USUARIO/Reg_Roles.jsp");
             }
             if (opc.equals("Modificar")) {
                 String idrol = request.getParameter("id_rol");
@@ -71,25 +71,25 @@ public class CRoles extends HttpServlet {
                 String Es_rol = request.getParameter("Es_rol");
                 rol.Mod_Rol(idrol, no_rol, Es_rol);
                 getServletContext().setAttribute("List_Rol", rol.List_Rol());
-                response.sendRedirect("vista/REGISTRO/Reg_Roles.jsp");
+                response.sendRedirect("vista/USUARIO/Reg_Roles.jsp");
             }
             if (opc.equals("Activar_Rol")) {
                 String idrol = request.getParameter("idrol");
                 rol.Activar_Roles(idrol);
                 getServletContext().setAttribute("List_Rol", rol.List_Rol());
-                response.sendRedirect("vista/REGISTRO/Reg_Roles.jsp");
+                response.sendRedirect("vista/USUARIO/Reg_Roles.jsp");
             }
             if (opc.equals("Desactivar_Rol")) {
                 String idrol = request.getParameter("idrol");
                 rol.Desactivar_Roles(idrol);
                 getServletContext().setAttribute("List_Rol", rol.List_Rol());
-                response.sendRedirect("vista/REGISTRO/Reg_Roles.jsp");
+                response.sendRedirect("vista/USUARIO/Reg_Roles.jsp");
             }
             if (opc.equals("Eliminar_Rol")) {
                 String idrol = request.getParameter("idrol");
                 rol.Desactivar_Roles(idrol);
                 getServletContext().setAttribute("List_Rol", rol.List_Rol());
-                response.sendRedirect("vista/REGISTRO/Reg_Roles.jsp");
+                response.sendRedirect("vista/USUARIO/Reg_Roles.jsp");
             }
             if (opc.equals("REGISTRAR")) {
                 String no_rol = request.getParameter("NOMBRE");
@@ -104,7 +104,7 @@ public class CRoles extends HttpServlet {
                 
                 out.print(request.getParameter("ESTADO"));
                 getServletContext().setAttribute("List_Rol", rol.List_Rol());
-                response.sendRedirect("vista/REGISTRO/Reg_Roles.jsp");
+                response.sendRedirect("vista/USUARIO/Reg_Roles.jsp");
             }
         } catch (Exception e) {
             

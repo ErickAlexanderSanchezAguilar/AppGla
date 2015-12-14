@@ -37,10 +37,13 @@ public class CDireccionar extends HttpServlet {
         String opc = request.getParameter("opc");
         try {
             if (opc.equals("Reg_Roles")) {
-                response.sendRedirect("vista/REGISTRO/Reg_Roles.jsp?opc=Reg_Roles");
+                response.sendRedirect("vista/USUARIO/Reg_Roles.jsp?opc=Reg_Roles");
             }
             if (opc.equals("Reg_Proveedores")) {
                 response.sendRedirect("vista/REGISTRO/Reg_Proveedores.jsp?opc=Reg_Proveedores");
+            }
+            if (opc.equals("Reg_Clientes")) {
+                response.sendRedirect("vista/REGISTRO/Reg_Clientes.jsp?opc=Reg_Clientes");
             }
             if (opc.equals("principal")) {
                 RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/principal.jsp");
